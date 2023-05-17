@@ -14,7 +14,11 @@ builder.Services.AddDbContext<DataContext>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors();
+
 var app = builder.Build();
+
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
