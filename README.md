@@ -58,17 +58,17 @@ git clone https://github.com/your-username/dating-app.git
 2. Navigate to the backend and frontend directories and install dependencies:
 
 ```bash
-cd dating-app-backend
+cd API
 dotnet restore
 
-cd ../dating-app-frontend
+cd ../client
 npm install
 ```
 
 3. Update database schema:
 
 ```bash
-cd ../dating-app-backend
+cd ../API
 dotnet ef database update
 ```
 
@@ -77,14 +77,14 @@ dotnet ef database update
 1. Run the backend server:
 
 ```bash
-cd dating-app-backend
+cd API
 dotnet run
 ```
 
 2. Run the frontend application:
 
 ```bash
-cd dating-app-frontend
+cd client
 ng serve
 ```
 
