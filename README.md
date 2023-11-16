@@ -1,6 +1,6 @@
 # Dating App Project
 
-Welcome to the Dating App project repository! This application is a full-stack dating app developed using the latest technologies and frameworks, including .NET 7, ASP.NET Core, Entity Framework, Angular 14, Bootstrap 5, and SQLite.
+Welcome to the Dating App project repository! This application is a comprehensive dating platform developed based on the insights from Neil Cummings' Udemy course. It offers a hands-on learning experience for building a modern and responsive dating application, incorporating a sophisticated tech stack.
 
 ## Table of Contents
 
@@ -15,28 +15,28 @@ Welcome to the Dating App project repository! This application is a full-stack d
 
 ## Introduction
 
-This dating app project is based on the teachings of Neil Cummings from the Udemy course, providing a hands-on learning experience for building a modern and responsive dating application. The app includes user authentication using Jwt Bearer, a sophisticated backend with .NET 7 and ASP.NET Core, and a dynamic frontend developed with Angular 14 and Bootstrap 5. The SQLite database is used as a temporary storage solution.
+The dating app is crafted using cutting-edge technologies and frameworks, showcasing the latest advancements in web and backend development. This project covers various aspects of a dating application.
 
 ## Features
 
-- User registration and authentication
-- Profile creation and customization
-- Matching algorithm for suggesting potential matches
-- Real-time chat functionality
-- Responsive and user-friendly interface
+- **User Authentication:** Secure registration and authentication process.
+- **Profile Customization:** Personalize your profile to stand out.
+- **Matching Algorithm:** Receive suggestions for potential matches.
+- **Real-time Chat:** Connect with matches through a dynamic chat interface.
+- **Responsive Interface:** Enjoy a seamless experience on any device.
 
 ## Technology Stack
 
 - **Backend:**
-  - .NET 7
-  - ASP.NET Core
-  - Entity Framework
-  - Jwt Bearer Authentication
-  - SQLite (momentarily)
+  - **.NET 7:** The backend foundation for robust server-side development.
+  - **ASP.NET Core:** A high-performance, open-source framework for building modern, cloud-based, and internet-connected applications.
+  - **Entity Framework:** Simplifies database operations and interactions.
+  - **Jwt Bearer Authentication:** Ensures secure and authenticated communication.
+  - **SQLite:** A temporary database solution for efficient data storage.
 
 - **Frontend:**
-  - Angular 14
-  - Bootstrap 5
+  - **Angular 14:** A powerful frontend framework for building dynamic and responsive web applications.
+  - **Bootstrap 5:** The world's most popular front-end open-source toolkit for designing and customizing responsive and mobile-first sites.
 
 ## Getting Started
 
@@ -52,7 +52,7 @@ To get started with the project, make sure you have the following prerequisites 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/dating-app.git
+git clone https://github.com/FernandoFalcone-dev/DatingApp.git
 ```
 
 2. Navigate to the backend and frontend directories and install dependencies:
