@@ -13,3 +13,8 @@
     background-color: #fff;
     border-top: none;
 }
+
+.gallery {
+    height: 500px;
+    background-color: white;
+}
