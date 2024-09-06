@@ -28,21 +28,24 @@ The dating app is crafted using cutting-edge technologies and frameworks, showca
 ## Technology Stack
 
 - **Backend:**
-  - **.NET 7:** The backend foundation for robust server-side development.
+  - **.NET 8:** The backend foundation for robust server-side development.
   - **ASP.NET Core:** A high-performance, open-source framework for building modern, cloud-based, and internet-connected applications.
   - **Entity Framework:** Simplifies database operations and interactions.
   - **Jwt Bearer Authentication:** Ensures secure and authenticated communication.
   - **SQLite:** A temporary database solution for efficient data storage.
 
 - **Frontend:**
-  - **Angular 14:** A powerful frontend framework for building dynamic and responsive web applications.
+  - **Angular 16:** A powerful frontend framework for building dynamic and responsive web applications.
   - **Bootstrap 5:** The world's most popular front-end open-source toolkit for designing and customizing responsive and mobile-first sites.
+
+- **Cloud Provider:**
+  - **Cloudinary:** A cloud-based service that provides comprehensive solutions for managing images and videos.
 
 ## Getting Started
 
 To get started with the project, make sure you have the following prerequisites installed:
 
-- [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Node.js](https://nodejs.org/)
 - [Angular CLI](https://cli.angular.io/)
 - [Visual Studio Code](https://code.visualstudio.com/) or any preferred IDE
