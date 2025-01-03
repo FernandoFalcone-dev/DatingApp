@@ -1,3 +1,9 @@
+.input-group {
+  margin-bottom: 15px;
+  justify-content: center;
+  width: 100%;
+}
+
 .input-group-append {
   cursor: pointer;
 }

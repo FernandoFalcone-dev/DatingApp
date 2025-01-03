@@ -1,35 +1,77 @@
-<form #registerForm="ngForm">
+<form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()">
   <h2 class="text-center text-primary">Sign up</h2>
   <hr />
 
+  <!-- Gender Input -->
+   <div class="mb-3">
+    <label class="me-3">I am a:</label>
+    <label class="form-check-label me-3">
+      <input type="radio" class="form-check-input" value="male" formControlName="gender"> Male
+    </label>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" value="female" formControlName="gender"> Female
+    </label>
+   </div>
+
   <!-- Username Input -->
-  <div class="input-group mb-3">
-    <span class="input-group-text">
-      <i class="bi bi-person"></i>
-    </span>
-    <input
-      type="text"
-      class="form-control"
-      name="username"
-      [(ngModel)]="model.username"
-      placeholder="Username"
-    />
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="bi bi-person"></i>
+      </span>
+    </div>
+    <app-text-input
+      [formControl]="$any(registerForm.controls['username'])"
+      label="Username"
+      style="flex: 1;"
+    ></app-text-input>
+  </div>
+
+  <!-- Known As Input -->
+  <div class="mb-3">
+    <app-text-input
+      [formControl]="$any(registerForm.controls['knownAs'])"
+      label="Known As"
+    ></app-text-input>
+  </div>
+
+  <!-- Date of Birth Input -->
+  <div class="mb-3">
+    <app-date-picker
+    [formControl]="$any(registerForm.controls['dateOfBirth'])"
+    label="Date of Birth"
+    [maxDate]="maxDate"></app-date-picker>
+  </div>
+
+  <!-- City Input -->
+  <div class="mb-3">
+    <app-text-input
+      [formControl]="$any(registerForm.controls['city'])"
+      label="City"
+    ></app-text-input>
+  </div>
+
+  <!-- Country Input -->
+  <div class="mb-3">
+    <app-text-input
+      [formControl]="$any(registerForm.controls['country'])"
+      label="Country"
+    ></app-text-input>
   </div>
 
   <!-- Password Input -->
-  <div class="input-group mb-3">
+  <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
         <i class="bi bi-lock"></i>
       </span>
     </div>
-    <input
-      type="{{ showPassword ? 'text' : 'password' }}"
-      class="form-control"
-      name="password"
-      [(ngModel)]="model.password"
-      placeholder="Password"
-    />
+    <app-text-input
+      [type]="showPassword ? 'text' : 'password'"
+      [formControl]="$any(registerForm.controls['password'])"
+      [label]="'Password'"
+      class="w-75"
+    ></app-text-input>
     <div class="input-group-append">
       <button
         class="btn btn-outline-secondary"
@@ -41,9 +83,43 @@
     </div>
   </div>
 
+  <!--Confirm Password Input -->
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="bi bi-lock"></i>
+      </span>
+    </div>
+    <app-text-input
+      [type]="showConfirmPassword ? 'text' : 'password'"
+      [formControl]="$any(registerForm.controls['confirmPassword'])"
+      [label]="'Confirm Password'"
+      class="w-75"
+    ></app-text-input>
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="toggleConfirmPasswordVisibility()"
+      >
+        <i class="bi {{ showConfirmPassword ? 'bi-eye-slash' : 'bi-eye' }}"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="validationErrors">
+    <ul class="text-danger">
+      <li *ngFor="let error of validationErrors">
+        {{ error }}
+      </li>
+    </ul>
+  </div>
+
   <!-- Buttons -->
   <div class="text-center">
-    <button class="btn btn-dark me-2" type="submit" (click)="register()">Register</button>
-    <button class="btn btn-outline-secondary" type="button" (click)="cancel()">Cancel</button>
+    <button [disabled]="registerForm.invalid" class="btn btn-dark me-2" type="submit">Register</button>
+    <button class="btn btn-outline-secondary" type="button" (click)="cancel()">
+      Cancel
+    </button>
   </div>
 </form>
