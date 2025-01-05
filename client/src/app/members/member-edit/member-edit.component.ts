@@ -1,16 +1,21 @@
 import { Component, HostListener, inject, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { Member } from 'src/app/models/member';
 import { User } from 'src/app/models/user';
+import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-member-edit',
-  templateUrl: './member-edit.component.html',
-  styleUrls: ['./member-edit.component.css']
+    selector: 'app-member-edit',
+    templateUrl: './member-edit.component.html',
+    styleUrls: ['./member-edit.component.css'],
+    standalone: true,
+    imports: [NgIf, TabsModule, FormsModule, PhotoEditorComponent]
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm | undefined;

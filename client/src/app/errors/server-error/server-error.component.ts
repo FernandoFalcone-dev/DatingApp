@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-server-error',
-  templateUrl: './server-error.component.html',
-  styleUrls: ['./server-error.component.css']
+    selector: 'app-server-error',
+    templateUrl: './server-error.component.html',
+    styleUrls: ['./server-error.component.css'],
+    standalone: true,
+    imports: [NgIf]
 })
 export class ServerErrorComponent {
   error: any;

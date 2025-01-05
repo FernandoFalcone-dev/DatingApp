@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 import { take } from 'rxjs';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
@@ -7,11 +7,21 @@ import { Member } from 'src/app/models/member';
 import { Photo } from 'src/app/models/photo';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
+import { NgIf, NgFor, NgClass, NgStyle, DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-photo-editor',
-  templateUrl: './photo-editor.component.html',
-  styleUrls: ['./photo-editor.component.css'],
+    selector: 'app-photo-editor',
+    templateUrl: './photo-editor.component.html',
+    styleUrls: ['./photo-editor.component.css'],
+    standalone: true,
+    imports: [
+        NgIf,
+        NgFor,
+        NgClass,
+        FileUploadModule,
+        NgStyle,
+        DecimalPipe,
+    ],
 })
 export class PhotoEditorComponent {
   @Input() member: Member | undefined;
