@@ -7,7 +7,7 @@ import { Member } from 'src/app/models/member';
 import { Photo } from 'src/app/models/photo';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
-import { NgIf, NgFor, NgClass, NgStyle, DecimalPipe } from '@angular/common';
+import { NgClass, NgStyle, DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'app-photo-editor',
@@ -15,8 +15,6 @@ import { NgIf, NgFor, NgClass, NgStyle, DecimalPipe } from '@angular/common';
     styleUrls: ['./photo-editor.component.css'],
     standalone: true,
     imports: [
-        NgIf,
-        NgFor,
         NgClass,
         FileUploadModule,
         NgStyle,

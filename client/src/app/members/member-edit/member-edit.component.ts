@@ -8,14 +8,13 @@ import { Member } from 'src/app/models/member';
 import { User } from 'src/app/models/user';
 import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-member-edit',
     templateUrl: './member-edit.component.html',
     styleUrls: ['./member-edit.component.css'],
     standalone: true,
-    imports: [NgIf, TabsModule, FormsModule, PhotoEditorComponent]
+    imports: [TabsModule, FormsModule, PhotoEditorComponent]
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm | undefined;

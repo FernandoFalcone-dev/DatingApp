@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -16,8 +16,8 @@ import { Member } from 'src/app/models/member';
 export class MemberDetailComponent implements OnInit {
   member: Member | undefined;
   images: GalleryItem[] = [];
-
-  constructor(private memberService: MembersService, private route: ActivatedRoute) { }
+  memberService = inject(MembersService);
+  route = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.loadMember();

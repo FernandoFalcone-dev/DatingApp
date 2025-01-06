@@ -6,16 +6,24 @@
     [formControl]="control"
     placeholder="{{ label }}"
   />
-  <div class="invalid-feedback" *ngIf="control.touched && control.errors?.['required']">
-    Please enter a {{ label }}
-  </div>
-  <div class="invalid-feedback" *ngIf="control.touched && control.errors?.['minlength']">
-    {{ label }} must be at least {{ control.errors?.['minlength'].requiredLength }} characters
-  </div>
-  <div class="invalid-feedback" *ngIf="control.touched && control.errors?.['maxlength']">
-    {{ label }} must be at most {{ control.errors?.['maxlength'].requiredLength }} characters
-  </div>
-  <div class="invalid-feedback" *ngIf="control.touched && control.errors?.['notMatching']">
-    Passwords do not match
-  </div>
+  @if (control.touched && control.errors?.['required']) {
+    <div class="invalid-feedback">
+      Please enter a {{ label }}
+    </div>
+  }
+  @if (control.touched && control.errors?.['minlength']) {
+    <div class="invalid-feedback">
+      {{ label }} must be at least {{ control.errors?.['minlength'].requiredLength }} characters
+    </div>
+  }
+  @if (control.touched && control.errors?.['maxlength']) {
+    <div class="invalid-feedback">
+      {{ label }} must be at most {{ control.errors?.['maxlength'].requiredLength }} characters
+    </div>
+  }
+  @if (control.touched && control.errors?.['notMatching']) {
+    <div class="invalid-feedback">
+      Passwords do not match
+    </div>
+  }
 </div>

@@ -10,7 +10,7 @@ import { NgFor, AsyncPipe } from '@angular/common';
     templateUrl: './member-list.component.html',
     styleUrls: ['./member-list.component.css'],
     standalone: true,
-    imports: [NgFor, MemberCardComponent, AsyncPipe]
+    imports: [MemberCardComponent, AsyncPipe]
 })
 export class MemberListComponent implements OnInit {
   members$: Observable<Member[]> | undefined;

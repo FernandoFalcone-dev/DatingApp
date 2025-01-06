@@ -1,25 +1,29 @@
-<div class="row mb-3" *ngIf="member">
-  <div class="col-2 mb-1" *ngFor="let photo of member.photos">
-    <img src="{{ photo.url }}" alt="photo of user" class="img-thumbnail mb-1" />
-    <div class="text-center">
-      <button
-        [disabled]="photo.isMain"
-        (click)="setMainPhoto(photo)"
-        [ngClass]="photo.isMain ? 'btn-success active' : 'btn-outline-success'"
-        class="btn btn-sm"
-      >
-        Main
-      </button>
-      <button
-        class="btn btn-sm btn-danger"
-        [disabled]="photo.isMain"
-        (click)="deletePhoto(photo.id)"
-      >
-        <i class="fa fa-trash"></i>
-      </button>
-    </div>
+@if (member) {
+  <div class="row mb-3">
+    @for (photo of member.photos; track $index) {
+      <div class="col-2 mb-1">
+        <img src="{{ photo.url }}" alt="photo of user" class="img-thumbnail mb-1" />
+        <div class="text-center">
+          <button
+            [disabled]="photo.isMain"
+            (click)="setMainPhoto(photo)"
+            [ngClass]="photo.isMain ? 'btn-success active' : 'btn-outline-success'"
+            class="btn btn-sm"
+          >
+            Main
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            [disabled]="photo.isMain"
+            (click)="deletePhoto(photo.id)"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    }
   </div>
-</div>
+}
 
 <div class="row">
   <div class="col-md-3">
@@ -43,68 +47,73 @@
     <input type="file" ng2FileSelect [uploader]="uploader" />
   </div>
 
-  <div
-    class="col-md-9"
-    style="margin-bottom: 40px"
-    *ngIf="uploader?.queue?.length"
-  >
-    <h3>Upload queue</h3>
-    <p>Queue length: {{ uploader?.queue?.length }}</p>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th width="50%">Name</th>
-          <th>Size</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of uploader?.queue">
-          <td>
-            <strong>{{ item?.file?.name }}</strong>
-          </td>
-          <td *ngIf="uploader?.options?.isHTML5" nowrap>
-            {{ item?.file?.size / 1024 / 1024 | number : ".2" }} MB
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div>
+  @if (uploader?.queue?.length) {
+    <div
+      class="col-md-9"
+      style="margin-bottom: 40px"
+    >
+      <h3>Upload queue</h3>
+      <p>Queue length: {{ uploader?.queue?.length }}</p>
+  
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="50%">Name</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of uploader?.queue; track $index) {
+            <tr>
+              <td>
+                <strong>{{ item?.file?.name }}</strong>
+              </td>
+              @if (uploader?.options?.isHTML5) {
+                <td nowrap>
+                  {{ item?.file?.size / 1024 / 1024 | number : ".2" }} MB
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+  
       <div>
-        Queue progress:
-        <div class="progress">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            [ngStyle]="{ width: uploader?.progress + '%' }"
-          ></div>
+        <div>
+          Queue progress:
+          <div class="progress">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              [ngStyle]="{ width: uploader?.progress + '%' }"
+            ></div>
+          </div>
         </div>
+        <button
+          type="button"
+          class="btn btn-success btn-s"
+          (click)="uploader?.uploadAll()"
+          [disabled]="!uploader?.getNotUploadedItems()?.length"
+        >
+          <span class="fa fa-upload"></span> Upload all
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning btn-s"
+          (click)="uploader?.cancelAll()"
+          [disabled]="!uploader?.isUploading"
+        >
+          <span class="fa fa-ban"></span> Cancel all
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-s"
+          (click)="uploader?.clearQueue()"
+          [disabled]="!uploader?.queue?.length"
+        >
+          <span class="fa fa-trash"></span> Remove all
+        </button>
       </div>
-      <button
-        type="button"
-        class="btn btn-success btn-s"
-        (click)="uploader?.uploadAll()"
-        [disabled]="!uploader?.getNotUploadedItems()?.length"
-      >
-        <span class="fa fa-upload"></span> Upload all
-      </button>
-      <button
-        type="button"
-        class="btn btn-warning btn-s"
-        (click)="uploader?.cancelAll()"
-        [disabled]="!uploader?.isUploading"
-      >
-        <span class="fa fa-ban"></span> Cancel all
-      </button>
-      <button
-        type="button"
-        class="btn btn-danger btn-s"
-        (click)="uploader?.clearQueue()"
-        [disabled]="!uploader?.queue?.length"
-      >
-        <span class="fa fa-trash"></span> Remove all
-      </button>
     </div>
-  </div>
+  }
 </div>

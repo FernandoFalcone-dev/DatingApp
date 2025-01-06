@@ -3,7 +3,6 @@ import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIf, NgFor } from '@angular/common';
 import { DatePickerComponent } from '../_forms/date-picker/date-picker.component';
 import { TextInputComponent } from '../_forms/text-input/text-input.component';
 
@@ -16,9 +15,7 @@ import { TextInputComponent } from '../_forms/text-input/text-input.component';
         FormsModule,
         ReactiveFormsModule,
         TextInputComponent,
-        DatePickerComponent,
-        NgIf,
-        NgFor,
+        DatePickerComponent
     ],
 })
 export class RegisterComponent implements OnInit {

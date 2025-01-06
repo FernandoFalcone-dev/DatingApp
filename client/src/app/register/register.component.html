@@ -107,13 +107,17 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="validationErrors">
-    <ul class="text-danger">
-      <li *ngFor="let error of validationErrors">
-        {{ error }}
-      </li>
-    </ul>
-  </div>
+  @if (validationErrors) {
+    <div class="row">
+      <ul class="text-danger">
+        @for (error of validationErrors; track $index) {
+          <li>
+            {{ error }}
+          </li>
+        }
+      </ul>
+    </div>
+  }
 
   <!-- Buttons -->
   <div class="text-center">

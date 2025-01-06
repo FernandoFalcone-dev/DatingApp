@@ -9,7 +9,9 @@
       [bsConfig]="bsConfig"
       [maxDate]="maxDate"
     />
-    <div class="invalid-feedback" *ngIf="control.touched && control.errors?.['required']">
-      {{ label }} is required
-    </div>
+    @if (control.touched && control.errors?.['required']) {
+      <div class="invalid-feedback">
+        {{ label }} is required
+      </div>
+    }
   </div>

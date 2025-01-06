@@ -5,9 +5,14 @@
     <button class="btn btn-outline-primary me-3" (click)="get404Error()">Test 404 Error</button>
     <button class="btn btn-outline-primary me-3" (click)="get400ValidationError()">Test 400 Validation Error</button>
 
-    <div class="row mt-5" *ngIf="validationErrors.length > 0">
+    @if (validationErrors.length > 0) {
+
+    }
+    <div class="row mt-5">
         <ul class="text-danger">
-            <li *ngFor="let error of validationErrors">{{ error }}</li>
+            @for (error of validationErrors; track $index) {
+                <li>{{ error }}</li>
+            }
         </ul>
     </div>
 </ng-container>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -11,8 +11,9 @@ import { NgIf } from '@angular/common';
 })
 export class ServerErrorComponent {
   error: any;
+  router = inject(Router);
 
-  constructor(private router: Router){
+  constructor(){
     const navigation = this.router.getCurrentNavigation();
     this.error = navigation?.extras?.state?.['error'];
   }

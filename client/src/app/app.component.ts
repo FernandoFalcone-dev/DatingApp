@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from './_services/account.service';
 import { User } from './models/user';
 import { RouterOutlet } from '@angular/router';
-import { NavComponent } from './nav/nav.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NavComponent } from './nav/nav.component';
 
 @Component({
     selector: 'app-root',
