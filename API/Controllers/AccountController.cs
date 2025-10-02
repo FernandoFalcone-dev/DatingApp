@@ -10,18 +10,11 @@ using System.Text;
 
 namespace API.Controllers
 {
-    public class AccountController : BaseApiController
+    public class AccountController(DataContext context, ITokenService tokenService, IMapper mapper) : BaseApiController
     {
-        private readonly DataContext _context;
-        private readonly ITokenService _tokenService;
-        private readonly IMapper _mapper;
-
-        public AccountController(DataContext context, ITokenService tokenService, IMapper mapper)
-        {
-            _context = context;
-            _tokenService = tokenService;
-            _mapper = mapper;
-        }
+        private readonly DataContext _context = context;
+        private readonly ITokenService _tokenService = tokenService;
+        private readonly IMapper _mapper = mapper;
 
         [HttpPost("register")] // api/account/register
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
@@ -74,7 +67,7 @@ namespace API.Controllers
 
         private async Task<bool> UserExists(string username)
         {
-            return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
+            return await _context.Users.AnyAsync(x => x.UserName.ToLower() == username.ToLower());
         }
     }
 }
